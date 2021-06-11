@@ -1,0 +1,10 @@
+{
+	"uid": "themperaturSensor",
+	"append": true,
+	"watch": false,
+	"script": "main.js",
+	"sourceDir": "/home/pi/Documents/nodejs/thermometerReader",
+	"logFile": "/home/pi/Documents/nodejs/thermometerReader/logs/forever.log",
+	"outFile": "/home/pi/Documents/nodejs/thermometerReader/logs/out.log",
+	"errFile": "/home/pi/Documents/nodejs/thermometerReader/logs/error.log"
+}

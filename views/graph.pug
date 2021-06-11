@@ -1,0 +1,37 @@
+html
+  head
+    title Some Testing
+    script(src='/scripts/chart-js@2-8-0.js')
+    script(src='/scripts/graph.js' defer)
+    div
+      div
+        p(id='currentTemperaturDate') Zeit:
+        h1(style='' id='thermalNow') Lade
+      div
+        select(id='graphSelector' onchange='updateGraphData()' )
+          each val in graphs
+            if (val.name == thermalType)
+              option(value=val.name selected="selected") #{val.description}
+            else
+              option(value=val.name) #{val.description}
+        text(style='' id='thermalTitle') Lade Grafik
+        form(style='float: right')
+          label(for='autoUpdateGraph') Grafik Aktualisieren
+          input(type='checkbox' id='autoUpdateGraph' onclick='checkboxClicked()')
+        if thermalType=='custom'
+          br
+          label(for='selectorStartTime') Start Zeit
+          select(id='selectorStartTime' )
+            option(value='startNow' selected='selected') Jetzt
+            option(value='start6hoursAgo') Vor 6 Stunden
+            option(value='start1daysAgo') Vor 1 Tag
+            option(value='start2daysAgo') Vor 2 Tagen
+          label(for='selectorDurration') Zeitspanne
+          select(id='selectorDurration')
+            option(value='durration1hours' selected='selected') 1 Stunde
+            option(value='durration6hours') 6 Stunden
+            option(value='durration1days') 1 Tag 
+            option(value='durration2days') 2 Tage
+          button(onclick='submitCustomGraphData()' type='button') Senden
+        div(thermalType=thermalType id="chartInfo" customData=customData)
+        canvas(id="myChart" height='100')
